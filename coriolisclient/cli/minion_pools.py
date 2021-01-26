@@ -41,12 +41,12 @@ class MinionPoolFormatter(formatter.EntityFormatter):
 
     def _get_formatted_data(self, obj):
         data = (obj.id,
-                obj.pool_name,
+                obj.name,
                 obj.endpoint_id,
-                obj.pool_platform,
-                obj.pool_os_type,
+                obj.platform,
+                obj.os_type,
                 obj.notes,
-                obj.pool_status,
+                obj.status,
                 obj.minimum_minions)
 
         return data
@@ -74,12 +74,12 @@ class MinionPoolDetailFormatter(formatter.EntityFormatter):
 
     def _get_formatted_data(self, obj):
         data = (obj.id,
-                obj.pool_name,
-                obj.pool_platform,
-                obj.pool_os_type,
+                obj.name,
+                obj.platform,
+                obj.os_type,
                 obj.notes,
                 obj.endpoint_id,
-                obj.pool_status,
+                obj.status,
                 obj.minimum_minions,
                 obj.maximum_minions,
                 obj.minion_max_idle_time,
@@ -176,9 +176,9 @@ class UpdateMinionPool(show.ShowOne):
     def take_action(self, args):
         updated_values = {}
         if args.name:
-            updated_values["pool_name"] = args.name
+            updated_values["name"] = args.name
         if args.pool_os_type:
-            updated_values["pool_os_type"] = args.pool_os_type
+            updated_values["os_type"] = args.pool_os_type
         if args.minimum_minions is not None:
             updated_values["minimum_minions"] = args.minimum_minions
         if args.maximum_minions is not None:
